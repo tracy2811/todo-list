@@ -254,7 +254,7 @@ const genTodosDisplay = function() {
 		info.classList.add(todo.data.priority);
 		info.classList.add("todo");
 		info.addEventListener("click", () => {
-			d = document.createElement("div");
+			const d = document.createElement("div");
 			d.textContent = todo.data.description;
 			info.appendChild(d);
 		});
