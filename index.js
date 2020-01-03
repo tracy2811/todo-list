@@ -11,7 +11,6 @@ if (localStorage.getItem("projects")) {
 	projects = JSON.parse(localStorage.getItem("projects"));
 }
 
-updateDisplay();
 window.addEventListener("unload", () => {
 	localStorage.setItem("todos", JSON.stringify(TodoList.todos));
 	localStorage.setItem("projects", JSON.stringify(TodoList.projects));
@@ -286,4 +285,6 @@ const genTodosDisplay = function() {
 	});
 	return todos;
 }
+
+updateDisplay();
 
