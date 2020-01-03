@@ -7,16 +7,20 @@ const Todo = function(title, description, dueDate, priority, projectID) {
 
 const genNewTodoForm = function() {
 	const form = document.createElement("div");
+	form.id = "todoForm";
 
 	const title = document.createElement("input");
 	title.type = "text";
 	title.placeholder = "Title";
+	title.required = true;
 
 	const description = document.createElement("textarea");
 	description.placeholder = "Short Description of Your Todo";
 
 	const dueDate = document.createElement("input");
 	dueDate.type = "date";
+	dueDate.value = new Date().toISOString().substr(0,10);
+	dueDate.required = true;
 
 	const priority = document.createElement("div");
 	["urgent", "medium", "low"].forEach((p) => {
@@ -43,6 +47,9 @@ const genNewTodoForm = function() {
 	const button = document.createElement("button");
 	button.textContent = "Add Todo";
 	button.addEventListener("click", function() {
+		if (!title.value.trim() || !dueDate.value) {
+			return;
+		}
 		let prio;
 		for (let i = 0; i < priority.children.length; ++i) {
 			if (priority.children[i].firstChild.checked) {
